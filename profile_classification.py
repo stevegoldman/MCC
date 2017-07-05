@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 from collections import defaultdict
 
 
-base_dir='c:\\Users\\sgoldman\\MCC\\'
+base_dir='c:\\Users\\sgoldman\\MCC\\data\\'
 
 
 def load_raw_profile_data():
