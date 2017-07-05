@@ -5,7 +5,7 @@ Created on Sat Jul 01 13:10:12 2017
 @author: sgoldman
 
 """
-
+import base_dir as bd
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import StratifiedShuffleSplit
@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 from collections import defaultdict
 
 
-base_dir='c:\\Users\\sgoldman\\MCC\\data\\'
+base_dir=bd.get_base_dir()
 
 
 def load_raw_profile_data():
