@@ -28,7 +28,8 @@ def get_labeled_profiles(df):
     return df_lab
 
 def make_train_test_data(df):
-    X=df['Composition']
+    
+    X=df#['Composition']
     y=np.c_[df['Matl Category Code']].reshape((-1,))
     #y=np.array([x[:2]for x in y])
     X_train,X_test,y_train, y_test=train_test_split(X,y,test_size=0.2,
