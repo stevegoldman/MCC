@@ -61,6 +61,8 @@ class ItemSelector(BaseEstimator, TransformerMixin):
 
     def transform(self, data_dict):
         return data_dict[self.key]
+    
+    
 
 
 class EPAText(BaseEstimator, TransformerMixin):
@@ -90,3 +92,29 @@ class EPAText(BaseEstimator, TransformerMixin):
                 ecs.append(ec)
         
         return self.code_vec.transform(ecs)
+    
+class Rcra(BaseEstimator,TransformerMixin):
+    
+    def __init__(self):
+        self.features=DictVectorizer()
+        
+    def fit(self,X):
+        Xt=[]
+        for r in X:
+            if r=='Y':
+                Xt.append({'RCRA':'Y'})
+            else:
+                Xt.append({'RCRA':'N'})
+        self.features.fit(Xt)
+        return self
+
+    def transform(self,X):
+        Xt=[]
+        for r in X:
+            if r=='Y':
+                Xt.append({'RCRA':'Y'})
+            else:
+                Xt.append({'RCRA':'N'})
+        self.features.transform(Xt)
+       
+        
