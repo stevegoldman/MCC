@@ -93,6 +93,10 @@ class EPAText(BaseEstimator, TransformerMixin):
         
         return self.code_vec.transform(ecs)
     
+    def get_feature_names(self):
+        
+        return self.code_vec.get_feature_names()
+    
 class Rcra(BaseEstimator,TransformerMixin):
     
     def __init__(self):
