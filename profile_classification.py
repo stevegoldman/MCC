@@ -24,8 +24,16 @@ def get_labeled_profiles(df):
     df_lab=df
     for bad_lab in ('    ','LIL ','W002'):
         df_lab=df_lab.loc[~(df_lab['Matl Category Code']==bad_lab)]
-    df_lab=df_lab.loc[~(df_lab['Matl Category Code'].isnull())]
+    df_lab=df_lab.dropna(subset=['Matl Category Code'])
     return df_lab
+
+def cut_low_frequencies(df,threshold):
+    df_cut=df
+    value_counts=df_cut['Matl Category Code'].value_counts()
+    to_remove=value_counts[value_counts<threshold].index
+    df_cut['Matl Category Code'].replace(to_remove,np.nan,inplace=True)
+    df_cut=df_cut.dropna(subset=['Matl Category Code'])
+    return df_cut             
 
 def make_train_test_data(df):
     
